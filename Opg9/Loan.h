@@ -6,7 +6,7 @@ class Loan {
 public :
     Loan ();
 
-    // Skal initialisere Loan til at have
+    // Loan constructor
     Loan ( double debt , int years , int paymentsPerYear , double interestRate );
 
     // Returns the number of years the loan lasts
