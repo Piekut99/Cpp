@@ -66,6 +66,7 @@ double Loan::totalInterestTaxDeducted(double taxDeductionRate) const {
     return Loan::totalInterest() * (taxDeductionRate/100);
 }
 
+// constructs and prints the array
 void Loan::outputPeriodicalPayments(std::ostream &ost) const {
     int const n = _paymentsPerYear * _years;
     double debtLeft = _debt;
@@ -84,13 +85,14 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const {
         debtLeft = debtLeft - (payment() - interestExpenses(debtLeft));
 
     }
-    Loan::printPP(PP, n, 3, std::cout);
+    Loan::printPP(PP, n, 3, ost);
 }
 
 double Loan::interestExpenses(double debt) const {
     double r = _interestRate / _paymentsPerYear / 100;
     return debt * r;
 }
+
 
 double Loan::payment() const {
     double G, r, y;
@@ -103,16 +105,18 @@ double Loan::payment() const {
     return y;
 }
 
+// help function to print the array with a pointer-pointer
 void Loan::printPP(double **arr, int const first, int const second, std::ostream &ost) const{
+    ost << "________________________________________________" << std::endl;
     ost << "|Debt Remaining| " << "Interest expence| " << "Taxdeduction|" << std::endl;
-    for (int i = 0; i < first +1; i++ ) {
+    for (int i = 0; i < first + 1 ; i++ ) {
         std::cout << std::fixed << std::setprecision(2);
         ost << "|"<< std::setw(14) <<arr[i][0] << "|"
         << std::setw(17) << arr[i][1]<< "|"
         << std::setw(13) << arr[i][2]<< "|" << std::endl;
     }
-    ost << "________________________________________________" << std::endl << std::endl;
-    for (int i = 0; i < first + 1; i++)
+    ost << "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << std::endl << std::endl;
+    for (int i = 0; i < first +1 ; i++)
         delete [] arr[i];
     delete [] arr;
 
