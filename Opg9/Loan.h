@@ -32,18 +32,17 @@ public :
     double totalPayment () const ;
 
     // Calculate the total net interest of a loan after tax refund
-    double totalInterestTaxDeducted ( double taxDeductionRate ) const ;
+    double totalInterestTaxDeducted ( double taxDeductionRate )
+    const ;
 
     // Output the periodical payments with unpaid balance,
     // paid interest and repayment of each payment to stream
     // object ost
     void outputPeriodicalPayments (std::ostream& ost) const ;
-
     // Help
     double interestExpenses (double debt) const ;
     double payment() const;
     void printPP(double **arr, int const first, int const second, std::ostream& ost) const;
-
 private :
     double _debt , _interestRate;
     int _years , _paymentsPerYear;

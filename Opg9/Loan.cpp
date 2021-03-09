@@ -77,12 +77,11 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const {
     }
 
     double taxDeductionRate = 30.6 / 100;
+    ost << "|Debt Remaining| " << "Interest expence| " << "Taxdeduction|" << std::endl;
     for (int i = 0; i < n ; i++ ) {
         PP[i][0] = debtLeft;
         PP[i][1] = Loan::interestExpenses(debtLeft);
         PP[i][2] = Loan::interestExpenses(debtLeft) * taxDeductionRate;
-        debtLeft = debtLeft - (payment() - interestExpenses(debtLeft));
-
     }
     Loan::printPP(PP, n, 3, std::cout);
 }
@@ -104,14 +103,13 @@ double Loan::payment() const {
 }
 
 void Loan::printPP(double **arr, int const first, int const second, std::ostream &ost) const{
-    ost << "|Debt Remaining| " << "Interest expence| " << "Taxdeduction|" << std::endl;
     for (int i = 0; i < first +1; i++ ) {
         std::cout << std::fixed << std::setprecision(2);
         ost << "|"<< std::setw(14) <<arr[i][0] << "|"
         << std::setw(17) << arr[i][1]<< "|"
         << std::setw(13) << arr[i][2]<< "|" << std::endl;
     }
-    ost << "________________________________________________" << std::endl << std::endl;
+
     for (int i = 0; i < first + 1; i++)
         delete [] arr[i];
     delete [] arr;
