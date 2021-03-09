@@ -1,5 +1,5 @@
 #include "Loan.h"
-#include <math.h>
+#include <cmath>
 #include <array>
 #include <iomanip>
 Loan::Loan() {}
@@ -104,6 +104,7 @@ double Loan::payment() const {
 }
 
 void Loan::printPP(double **arr, int const first, int const second, std::ostream &ost) const{
+    ost << "________________________________________________" << std::endl;
     ost << "|Debt Remaining| " << "Interest expence| " << "Taxdeduction|" << std::endl;
     for (int i = 0; i < first +1; i++ ) {
         std::cout << std::fixed << std::setprecision(2);

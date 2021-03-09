@@ -8,7 +8,7 @@ int main()
     double debt, interestRate;
     int    years, paymentsPerYear;
     // This lets you input any kind of loan that you would like
-    cout << "Please input debt, years, number of payments per year and the interest rate" << endl;
+    cout << "Please input debt, years, terms per year and the interest rate" << endl;
     cin >> debt >> years >> paymentsPerYear >> interestRate;
 
     Loan loan(debt, years, paymentsPerYear, interestRate);
