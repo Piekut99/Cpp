@@ -42,12 +42,8 @@ public :
     // Help
     double interestExpenses (double debt) const ;
     double payment() const;
-<<<<<<< HEAD
     void printPP(double **arr, int const first, int const second, std::ostream& ost) const;
 
-=======
-    double ** initializeArray(double ** array);
->>>>>>> parent of 293ad1a ([working])
 private :
     double _debt , _interestRate;
     int _years , _paymentsPerYear;
