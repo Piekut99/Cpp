@@ -46,7 +46,7 @@ void Loan::setInterestRate ( double rate ) {
 }
 
 double Loan::totalInterest() const {
-    // lrint uses bankers rounding to int
+    // lrint uses bankers rounding to cast to a long int
     return lrint((Loan::totalPayment() - _debt) * 100) / 100.0;
 }
 
@@ -61,7 +61,7 @@ double Loan::totalPayment() const {
     return y * n;
 }
 
-// returns the amount of money the banks earns
+// returns the total amount of money you can deduct from your taxes
 double Loan::totalInterestTaxDeducted(double taxDeductionRate) const {
     return Loan::totalInterest() * (taxDeductionRate/100);
 }
@@ -72,11 +72,13 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const {
     double debtLeft = _debt;
     double **PP;
 
+    // constructs the empty array as pointer-pointer
     PP = new double *[n + 1];
     for (int i = 0; i < n + 1; i++) {
         PP[i] = new double[3];
     }
 
+    // fills the array
     double taxDeductionRate = 30.6 / 100;
     for (int i = 0; i < n ; i++ ) {
         PP[i][0] = debtLeft;
@@ -88,6 +90,7 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const {
     Loan::printPP(PP, n, 3, ost);
 }
 
+// retruns the total amount of money the banks earns
 double Loan::interestExpenses(double debt) const {
     double r = _interestRate / _paymentsPerYear / 100;
     return debt * r;
@@ -116,6 +119,7 @@ void Loan::printPP(double **arr, int const first, int const second, std::ostream
         << std::setw(13) << arr[i][2]<< "|" << std::endl;
     }
     ost << "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << std::endl << std::endl;
+    //clears the array from the heap
     for (int i = 0; i < first +1 ; i++)
         delete [] arr[i];
     delete [] arr;
