@@ -14,6 +14,7 @@ int main()
     Loan loan(debt, years, paymentsPerYear, interestRate);
     loan.outputPeriodicalPayments(cout);
 
+
     cout <<"The total payments is = " << loan.totalPayment() << "kr" << endl;
     cout <<"The total interest is = " << loan.totalInterest() << "kr" <<endl;
     cout <<"The total tax deduction is = " << loan.totalInterestTaxDeducted(30.6) << "kr" << endl;

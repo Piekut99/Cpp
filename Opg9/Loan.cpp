@@ -72,7 +72,7 @@ void Loan::outputPeriodicalPayments(std::ostream &ost) const {
     double debtLeft = _debt;
     double **PP;
 
-    PP = new double *[n];
+    PP = new double *[n + 1];
     for (int i = 0; i < n + 1; i++) {
         PP[i] = new double[3];
     }
